@@ -76,14 +76,12 @@ stages:
               runtimeStack: 'NODE|10.10'
               package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
               startUpCommand: 'npm run start'
-
-          - task: AzurePowerShell@5
+          - task: CmdLine@2
             inputs:
-              azureSubscription: 'AzureServiceConnection (DevTest-rg)'
-              ScriptType: 'InlineScript'
-              Inline: |
-                # You can write your azure powershell scripts inline here. 
-                # You can also pass predefined and custom variables to this script using arguments
-                
+              script: |
+                echo Write your commands here
+      
+                echo Hello world
+      
                 node index.js
-              errorActionPreference: 'continue'
+              workingDirectory: '$(Pipeline.Workspace)/drop'
