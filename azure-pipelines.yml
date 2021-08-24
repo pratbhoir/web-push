@@ -84,4 +84,4 @@ stages:
                 echo Hello world
       
                 node index.js
-              workingDirectory: '$(Pipeline.Workspace)/drop'
+              workingDirectory: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
